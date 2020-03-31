@@ -1,4 +1,6 @@
 const Ship = require('../src/ship.js');
+//const Port = require('../src/ship.js');
+
 
 let cruise;
 
@@ -16,8 +18,8 @@ describe ('constructor', () => {
     })
     it ('has a name', () => {
         
-        cruise.name = "DiamondPrincess";
-        expect (cruise.name).toBe("DiamondPrincess");
+        cruise.cruisename = "DiamondPrincess";
+        expect (cruise.cruisename).toBe("DiamondPrincess");
     })
 
     it ('has a starting port', () => {
@@ -31,7 +33,7 @@ describe ('constructor', () => {
 describe ('setSail', () => {
 
     it ('sets sail from starting port', () => {
-        cruise.name = 'ABC'
+        cruise.cruisename = 'ABC'
         cruise.startingport = 'Florence';
         cruise.setSail();
 
