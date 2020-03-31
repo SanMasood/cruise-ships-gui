@@ -1,31 +1,33 @@
 const Ship = require('../src/ship.js');
-//const Port = require('../src/ship.js');
+const Port = require('../src/port.js');
 
 
-let cruise;
+let shipObj;
 
 beforeEach(() => {
 
-cruise= new Ship();
+shipObj = new Ship(new Port()); //pass portObj?
+
 });
 
 describe ('constructor', () => {
 
     it('creates instance of object Ship', () => {
 
-        expect(new Ship()).toBeInstanceOf(Object);
+        expect(new Ship(new Port())).toBeInstanceOf(Object);
 
     })
     it ('has a name', () => {
         
-        cruise.cruisename = "DiamondPrincess";
-        expect (cruise.cruisename).toBe("DiamondPrincess");
+        shipObj.cruisename = "DiamondPrincess";
+        expect (shipObj.cruisename).toBe("DiamondPrincess");
     })
 
     it ('has a starting port', () => {
+        const portObj = new Port('Destination');
+        const shipObj2 = new Ship (portObj);
 
-        cruise.startingport = 'Cornwall';
-        expect (cruise.startingport).toBe('Cornwall');
+        expect (shipObj2.currentport).toBe(portObj.portname);
 
     })
 
@@ -33,13 +35,28 @@ describe ('constructor', () => {
 describe ('setSail', () => {
 
     it ('sets sail from starting port', () => {
-        cruise.cruisename = 'ABC'
-        cruise.startingport = 'Florence';
-        cruise.setSail();
+        shipObj.cruisename = 'ABC'
+        shipObj.currentport = 'Florence';
+        shipObj.setSail();
 
-        expect (cruise.setSail()).toEqual(cruise.sailString);
-        expect (cruise.setSail()).toBeFalsy();
+        expect (shipObj.setSail()).toEqual(shipObj.sailString);
+        expect (shipObj.setSail()).toBeFalsy();
         
+
+    })
+})
+
+describe ('dock', () => {
+
+    it('docks at a given port', () => {
+/*
+        let aNewPort = new Port(); 
+        shipObj.dockingPort = 'Stopping Here';
+        aNewPort.portname = 'Destination'
+        shipObj.setSail();
+
+        shipObj.dock();
+        expect (shipObj.dockingPort).tobe(aNewPort.portname);*/
 
     })
 })

@@ -1,10 +1,10 @@
-const Port = require('../src/ship.js');
+const Port = require('../src/port.js');
 
-let port;
+let portObj;
 
 beforeEach(() => {
 
-port = new Port();
+portObj = new Port('Destination');
 });
 
 describe ('constructor', () => {
@@ -17,8 +17,9 @@ describe ('constructor', () => {
 
     it ('has a name', () => {
         
-        port.name = 'Penzance';
-        expect(port.name).toBe('Penzance');
+        //portObj.portname = 'Penzance';
+        expect(portObj.portname).toBe('Destination');
     })
+
 
 })
