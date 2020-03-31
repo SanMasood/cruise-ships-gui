@@ -1,12 +1,17 @@
-const Ship = require('../src/ship');
+const Ship = require('../src/ship.js');
 
-let cruise = new Ship(name);
+let cruise;
+
+beforeEach(() => {
+
+cruise= new Ship();
+});
 
 describe ('constructor', () => {
 
-    it('creates instance of object ship', () => {
+    it('creates instance of object Ship', () => {
 
-        expect(cruise).toBeInstanceOf(Object);
+        expect(new Ship()).toBeInstanceOf(Object);
 
     })
     it ('has a name', () => {
@@ -22,4 +27,17 @@ describe ('constructor', () => {
 
     })
 
+})
+describe ('setSail', () => {
+
+    it ('sets sail from starting port', () => {
+        cruise.name = 'ABC'
+        cruise.startingport = 'Florence';
+        cruise.setSail();
+
+        expect (cruise.setSail()).toEqual(cruise.sailString);
+        expect (cruise.setSail()).toBeFalsy();
+        
+
+    })
 })
