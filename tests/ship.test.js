@@ -1,12 +1,12 @@
 const Ship = require('../src/ship.js');
 const Port = require('../src/port.js');
-
+const Itinerary = require('../src/itinerary.js')
 
 let shipObj;
 
 beforeEach(() => {
 
-shipObj = new Ship(new Port()); //pass portObj?
+shipObj = new Ship(new Itinerary()); //pass portObj?
 
 });
 
@@ -14,7 +14,7 @@ describe ('constructor', () => {
 
     it('creates instance of object Ship', () => {
 
-        expect(new Ship(new Port())).toBeInstanceOf(Object);
+        expect(new Ship(new Itinerary())).toBeInstanceOf(Object);
 
     })
     it ('has a name', () => {
@@ -56,7 +56,23 @@ describe ('dock', () => {
         const port3 = new Port('Abu Dhabi');    
       
         ship2.dock(port3);
-        expect (ship2.currentport).toBe(port3);
+        expect (ship2.currentport).toBe(port3);    
+
+    })
+
+    it ('can dock at a different port', () => {
+        const port1 = new Port ('RAK');
+        const port2 = new Port ('SAR');
+        const itnObj = new Itinerary ([port1, port2]);
+        const ship3 = new Ship (itnObj);        
+
+        /*
+        ship3.dock ();
+        ship3.currentport = ports[1];//next port in itnObj2
+
+        expect(ship3.currentport).toBe()*/
+        expect ()
+
 
     })
 })
