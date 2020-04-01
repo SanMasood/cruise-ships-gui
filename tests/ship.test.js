@@ -2,30 +2,39 @@ const Ship = require('../src/ship.js');
 const Port = require('../src/port.js');
 const Itinerary = require('../src/itinerary.js')
 
-let shipObj;
+/*let shipObj;
 
 beforeEach(() => {
 
 shipObj = new Ship(new Itinerary()); //pass portObj?
 
-});
+});*/
 
 describe ('constructor', () => {
 
     it('creates instance of object Ship', () => {
 
-        expect(new Ship(new Itinerary())).toBeInstanceOf(Object);
+        const port = new Port ('RAK');
+        const itn = new Itinerary([port]);
+        const shipObj = new Ship(itn);
+
+        expect(shipObj).toBeInstanceOf(Object);
 
     })
     it ('has a name', () => {
-        
+        const port = new Port ();
+        const itn = new Itinerary(port);
+        const shipObj = new Ship(itn);
+
         shipObj.cruisename = "DiamondPrincess";
         expect (shipObj.cruisename).toBe("DiamondPrincess");
     })
 
     it ('has a starting port', () => {
         const portObj = new Port('Destination');
-        const shipObj2 = new Ship (portObj);
+        const itn1 = new Itinerary([portObj]);
+        const shipObj2 = new Ship (itn1);
+
 
         expect (shipObj2.currentPort).toBe(portObj);
 
@@ -37,7 +46,8 @@ describe ('setSail', () => {
     it ('sets sail from starting port', () => {
 
         const port = new Port('Dover');
-        const ship = new Ship(port);
+        const itn = new Itinerary([port]);
+        const ship = new Ship(itn);
       
         ship.setSail();
       
@@ -62,12 +72,13 @@ describe ('setSail', () => {
 describe ('dock', () => {
 
     it('docks at a given port', () => {
-        const port2 = new Port('Darfur');
-        const ship2 = new Ship (port2);        
-        const port3 = new Port('Abu Dhabi');    
+        const port = new Port('Darfur');
+        const itn = new Itinerary([port]);    
+
+        const ship = new Ship (itn);        
       
-        ship2.dock(port3);
-        expect (ship2.currentPort).toBe(port3);    
+        ship.dock(port);
+        expect (ship.currentPort).toBe(port);    
 
     })
 
@@ -75,7 +86,12 @@ describe ('dock', () => {
         const port1 = new Port ('RAK');
         const port2 = new Port ('SAR');
         const itnObj = new Itinerary ([port1, port2]);
-        const ship3 = new Ship (itnObj);        
+        const ship = new Ship (itnObj); 
+        
+        ship.setSail();
+        ship.dock();
+
+        expect(ship.currentPort).toBe(port2);       
 
         /*
         ship3.dock ();

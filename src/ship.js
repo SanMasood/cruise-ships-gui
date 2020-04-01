@@ -1,8 +1,10 @@
-function Ship(currentPort){
+function Ship(itn){
     this.cruisename;
-    
-    this.currentPort = currentPort;
+
+    this.itn = itn;
+    this.currentPort = itn.ports[0];
     this.previousPort = null;
+
 
 }
 
@@ -17,10 +19,15 @@ Ship.prototype = {
 
     },
 
-    dock(portObj2){
+    dock(){
+
+        const itinerary = this.itn;
+        const previousPortIndex = itinerary.ports.indexOf(this.previousPort);
+      
+        this.currentPort = itinerary.ports[previousPortIndex + 1];
         
-        this.currentPort = portObj2; //HERE
-        //return this.currentport;
+        //this.currentPort = portObj2; //HERE
+
     },        
     
 } 
