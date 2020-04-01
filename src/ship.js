@@ -14,6 +14,11 @@ Ship.prototype = {
 
         //this.sailString =`Cruise ${this.cruisename} has set sail from ${this.startingport}.`;
         //console.log (this.sailString);
+       
+        const currentPortIndex = this.itn.ports.indexOf(this.currentPort);
+        if (currentPortIndex === this.itn.ports.length-1)
+        throw new Error('End of itinerary reached');
+
         this.previousPort = this.currentPort;
         this.currentPort = null;
 
@@ -21,10 +26,10 @@ Ship.prototype = {
 
     dock(){
 
-        const itinerary = this.itn;
-        const previousPortIndex = itinerary.ports.indexOf(this.previousPort);
+        //const itinerary = this.itn; OR you could do this for better understanding
+        const previousPortIndex = this.itn.ports.indexOf(this.previousPort);
       
-        this.currentPort = itinerary.ports[previousPortIndex + 1];
+        this.currentPort = this.itn.ports[previousPortIndex + 1];
         
         //this.currentPort = portObj2; //HERE
 

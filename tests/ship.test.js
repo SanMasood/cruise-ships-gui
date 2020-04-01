@@ -45,14 +45,15 @@ describe ('setSail', () => {
 
     it ('sets sail from starting port', () => {
 
-        const port = new Port('Dover');
-        const itn = new Itinerary([port]);
+        const port1 = new Port('RAK');
+        const port2 = new Port ('SAR');
+        const itn = new Itinerary([port1, port2]);
         const ship = new Ship(itn);
       
         ship.setSail();
       
         expect(ship.currentPort).toBeFalsy();
-        expect(ship.previousPort).toBe(port);
+        expect(ship.previousPort).toBe(port1);
        /* const portObj = new Port('Destination');
 
         shipObj.currentPort = 'Florence';
@@ -99,7 +100,19 @@ describe ('dock', () => {
 
         expect(ship3.currentport).toBe()
         expect ()*/
-
-
     })
+
+    it('can\'t sail further than its itinerary', () => {
+        const port1 = new Port('RAK');
+        const port2 = new Port('SAR');
+        const itn = new Itinerary([port1, port2]);
+        const ship = new Ship(itn);
+      
+        ship.setSail();
+        ship.dock();
+      
+        expect(() => ship.setSail()).toThrowError('End of itinerary reached');
+      });
+
+
 })
