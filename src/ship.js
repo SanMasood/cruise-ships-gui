@@ -1,7 +1,7 @@
-function Ship(itnObj){
+function Ship(currentPort){
     this.cruisename;
     
-    this.currentport = itnObj;
+    this.currentPort = currentPort;
     this.previousPort = null;
 
 }
@@ -12,13 +12,14 @@ Ship.prototype = {
 
         //this.sailString =`Cruise ${this.cruisename} has set sail from ${this.startingport}.`;
         //console.log (this.sailString);
-        this.startingport = null;
-        this.previousPort = this.currentport;
+        this.previousPort = this.currentPort;
+        this.currentPort = null;
+
     },
 
     dock(portObj2){
         
-        this.currentport = portObj2; //HERE
+        this.currentPort = portObj2; //HERE
         //return this.currentport;
     },        
     

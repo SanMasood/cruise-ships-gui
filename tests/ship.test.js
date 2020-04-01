@@ -27,7 +27,7 @@ describe ('constructor', () => {
         const portObj = new Port('Destination');
         const shipObj2 = new Ship (portObj);
 
-        expect (shipObj2.currentport).toBe(portObj);
+        expect (shipObj2.currentPort).toBe(portObj);
 
     })
 
@@ -35,14 +35,25 @@ describe ('constructor', () => {
 describe ('setSail', () => {
 
     it ('sets sail from starting port', () => {
-        const portObj = new Port('Destination');
 
-        shipObj.cruisename = 'ABC' //Refer walkthrough
-        shipObj.currentport = 'Florence';
+        const port = new Port('Dover');
+        const ship = new Ship(port);
+      
+        ship.setSail();
+      
+        expect(ship.currentPort).toBeFalsy();
+        expect(ship.previousPort).toBe(port);
+       /* const portObj = new Port('Destination');
+
+        shipObj.currentPort = 'Florence';
         shipObj.setSail();
+        expect (shipObj.setSail()).toBeFalsy();*/
+
 
         //expect (shipObj.setSail()).toEqual(shipObj.sailString);
-        expect (shipObj.setSail()).toBeFalsy();
+        //shipObj.previousPort = 'RAK' //HERE 
+        //expect(shipObj.previousPort).toBe(portObj);
+
         
 
     })
@@ -56,7 +67,7 @@ describe ('dock', () => {
         const port3 = new Port('Abu Dhabi');    
       
         ship2.dock(port3);
-        expect (ship2.currentport).toBe(port3);    
+        expect (ship2.currentPort).toBe(port3);    
 
     })
 
@@ -70,8 +81,8 @@ describe ('dock', () => {
         ship3.dock ();
         ship3.currentport = ports[1];//next port in itnObj2
 
-        expect(ship3.currentport).toBe()*/
-        expect ()
+        expect(ship3.currentport).toBe()
+        expect ()*/
 
 
     })
