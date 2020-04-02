@@ -26,7 +26,7 @@ Ship.prototype = {
 
     dock(){
 
-        //const itinerary = this.itn; OR you could do this for better understanding
+        //const itinerary = this.itn; OR you could do as in WT
         const previousPortIndex = this.itn.ports.indexOf(this.previousPort);
       
         this.currentPort = this.itn.ports[previousPortIndex + 1];
