@@ -4,6 +4,7 @@ function Ship(itn){
     this.itn = itn;
     this.currentPort = itn.ports[0];
     this.previousPort = null;
+    this.currentPort.addShip(this);
 
 
 }

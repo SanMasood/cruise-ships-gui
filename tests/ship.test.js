@@ -7,6 +7,7 @@ const Itinerary = require('../src/itinerary.js')
 beforeEach(() => {
 
 shipObj = new Ship(new Itinerary()); //pass portObj?
+create itn & port object here.
 
 });*/
 
@@ -21,9 +22,19 @@ describe ('constructor', () => {
         expect(shipObj).toBeInstanceOf(Object);
 
     })
+    it ('adds instantiated ship to port\'s totalShips', () => {
+        const port = new Port ('RAK');
+        const itn = new Itinerary([port]);
+        const shipObj = new Ship (itn);
+        //port.addShip(shipObj);
+
+        expect (port.totalShips).toContain(shipObj);
+
+
+    })
     it ('has a name', () => {
-        const port = new Port ();
-        const itn = new Itinerary(port);
+        const port = new Port ('SAR');
+        const itn = new Itinerary([port]);
         const shipObj = new Ship(itn);
 
         shipObj.cruisename = "DiamondPrincess";
