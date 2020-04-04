@@ -2,13 +2,30 @@ const Ship = require('../src/ship.js');
 const Port = require('../src/port.js');
 const Itinerary = require('../src/itinerary.js')
 
-let ship, port, itn, port2;
+let ship, port1, itn, port2;
 
 beforeEach(() => {
+    
+    const port = {
+        removeShip: jest.fn(),
+        addShip: jest.fn(),
+      };
+    
+      port1 = {
+        ...port,
+        portname: 'RAK',
+        totalShips: []
+      };
+    
+      port2 = {
+        ...port,
+        name: 'SAR',
+        totalShips: []
+      };
 
-    port = new Port ('RAK');
-    port2 = new Port ('SAR');
-    itn = new Itinerary([port, port2]);
+    //port = new Port ('RAK');
+    //port2 = new Port ('SAR');
+    itn = new Itinerary([port1, port2]);
     ship = new Ship(itn);
 
 });
@@ -22,7 +39,7 @@ describe ('constructor', () => {
     })
     it ('adds instantiated ship to port\'s totalShips', () => {
      
-        expect (port.totalShips).toContain(ship);
+        expect (port1.addShip).toHaveBeenCalledWith(ship);
 
     })
     it ('has a name', () => {
@@ -34,7 +51,7 @@ describe ('constructor', () => {
 
     it ('has a starting port', () => {
  
-        expect (ship.currentPort).toBe(port);
+        expect (ship.currentPort).toBe(port1);
 
     })
 
@@ -46,9 +63,9 @@ describe ('setSail', () => {
         ship.setSail();
       
         expect(ship.currentPort).toBeFalsy();
-        expect(ship.previousPort).toBe(port);
+        expect(ship.previousPort).toBe(port1);
 
-        expect(port.totalShips).not.toContain(ship);
+        expect(port1.removeShip).toHaveBeenCalledWith(ship);
 
     })
     
@@ -61,7 +78,7 @@ describe ('dock', () => {
         ship.dock();
 
         expect(ship.currentPort).toBe(port2);     
-        expect(port2.totalShips).toContain(ship);  
+        expect(port2.addShip).toHaveBeenCalledWith(ship);  
 
     })
    
@@ -79,13 +96,13 @@ describe ('dock', () => {
 
     it('docks at a given port', () => {
       
-        expect (ship.currentPort).toBe(port);    
+        expect (ship.currentPort).toBe(port1);    
 
     })
     
     it ('ship gets added to totalShips of port when ship docks', () => {  
       
-        expect (port.totalShips).toContain(ship);
+        expect (port1.addShip).toHaveBeenCalledWith(ship); //addShip
 
     })
 
