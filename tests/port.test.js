@@ -7,7 +7,7 @@ let port, ship, ship2, ship3;
 beforeEach(() => {
 
 port = new Port('RAK');
-ship = ship2 = ship3 = {};
+ship = ship2 = ship3 = jest.fn();
 
 });
 

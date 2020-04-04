@@ -4,8 +4,7 @@ const Port = require('../src/port.js');
 let port, port2, itn;
 
 beforeEach(() => {
-    port = new Port ('RAK');
-    port2 = new Port ('SAR');
+    port = port2 = jest.fn();
     itn = new Itinerary([port, port2]);
 
 })
