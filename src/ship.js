@@ -5,7 +5,7 @@ function Ship(itn){
     this.currentPort = itn.ports[0];
     this.previousPort = null;
     this.currentPort.addShip(this);
-
+    //this.currentPort.removeShip(this); //previousPort?
 
 }
 
@@ -23,6 +23,10 @@ Ship.prototype = {
         this.previousPort = this.currentPort;
         this.currentPort = null;
 
+        this.previousPort.removeShip(this);
+
+
+
     },
 
     dock(){
@@ -31,8 +35,11 @@ Ship.prototype = {
         const previousPortIndex = this.itn.ports.indexOf(this.previousPort);
       
         this.currentPort = this.itn.ports[previousPortIndex + 1];
+
+        this.currentPort.addShip(this);
         
-        //this.currentPort = portObj2; //HERE
+        //this.currentPort = portObj2; //HERE  
+
 
     },        
     

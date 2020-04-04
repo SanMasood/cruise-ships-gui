@@ -41,7 +41,12 @@ describe ('removeShip', () => {
         const port1 = new Port('RAK');
         const ship1 = ship2 = ship3 = {};
 
-        port1.totalShips = [ship1, ship2, ship3];
+        //port1.totalShips = [ship1, ship2, ship3];
+        port1.addShip(ship1);
+        port1.addShip(ship2);
+        port1.addShip(ship3);
+
+
         port1.removeShip(ship2);
         expect (port1.totalShips).toEqual([ship1, ship2]);
         

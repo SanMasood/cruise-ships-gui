@@ -65,6 +65,13 @@ describe ('setSail', () => {
       
         expect(ship.currentPort).toBeFalsy();
         expect(ship.previousPort).toBe(port1);
+
+        expect(port1.totalShips).not.toContain(ship);
+
+    })
+
+        //removes ship from array ships:
+        //expect(port1.ships).not.toContain(ship);
        /* const portObj = new Port('Destination');
 
         shipObj.currentPort = 'Florence';
@@ -75,10 +82,7 @@ describe ('setSail', () => {
         //expect (shipObj.setSail()).toEqual(shipObj.sailString);
         //shipObj.previousPort = 'RAK' //HERE 
         //expect(shipObj.previousPort).toBe(portObj);
-
-        
-
-    })
+    
 })
 
 describe ('dock', () => {
@@ -103,7 +107,9 @@ describe ('dock', () => {
         ship.setSail();
         ship.dock();
 
-        expect(ship.currentPort).toBe(port2);       
+        expect(ship.currentPort).toBe(port2);     
+        expect(port2.totalShips).toContain(ship);  
+
 
         /*
         ship3.dock ();
@@ -112,7 +118,7 @@ describe ('dock', () => {
         expect(ship3.currentport).toBe()
         expect ()*/
     })
-
+   
     it('can\'t sail further than its itinerary', () => {
         const port1 = new Port('RAK');
         const port2 = new Port('SAR');
@@ -124,6 +130,19 @@ describe ('dock', () => {
       
         expect(() => ship.setSail()).toThrowError('End of itinerary reached');
       });
+
+      it ('ship gets added to totalShips of port when ship docks', () => {
+
+        const port = new Port('Darfur');
+        const itn = new Itinerary([port]);    
+        const ship = new Ship (itn);        
+      
+        ship.dock();
+
+        expect (port.totalShips).toContain(ship);
+
+
+    })
 
 
 })
