@@ -54,23 +54,6 @@ describe ('setSail', () => {
 })
 
 describe ('dock', () => {
-
-    it('docks at a given port', () => {
-      
-        ship.dock();
-        expect (ship.currentPort).toBe(port);    
-
-    })
-
-    
-    it ('ship gets added to totalShips of port when ship docks', () => {  
-      
-        ship.dock();
-
-        expect (port.totalShips).toContain(ship);
-
-    })
-
     it ('can dock at a different port', () => {
         
         ship.setSail();
@@ -89,6 +72,22 @@ describe ('dock', () => {
         expect(() => ship.setSail()).toThrowError('End of itinerary reached');
     });
 
+    beforeEach(() => {
+        ship.dock();
+    })
+
+    it('docks at a given port', () => {
+      
+        expect (ship.currentPort).toBe(port);    
+
+    })
+
+    
+    it ('ship gets added to totalShips of port when ship docks', () => {  
+      
+        expect (port.totalShips).toContain(ship);
+
+    })
 
 })
 
