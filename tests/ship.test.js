@@ -28,6 +28,7 @@ describe ('constructor', () => {
     it ('has a name', () => {
     
         ship.cruisename = "DiamondPrincess";
+        
         expect (ship.cruisename).toBe("DiamondPrincess");
     })
 
@@ -81,7 +82,6 @@ describe ('dock', () => {
         expect (ship.currentPort).toBe(port);    
 
     })
-
     
     it ('ship gets added to totalShips of port when ship docks', () => {  
       

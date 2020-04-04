@@ -2,11 +2,13 @@ const Port = require('../src/port.js');
 const Ship = require('../src/ship.js');
 const Itinerary = require('../src/itinerary.js')
 
-let portObj;
+let port, ship, ship2, ship3;
 
 beforeEach(() => {
 
-portObj = new Port('Destination');
+port = new Port('RAK');
+ship = ship2 = ship3 = {};
+
 });
 
 describe ('constructor', () => {
@@ -19,37 +21,30 @@ describe ('constructor', () => {
 
     it ('has a name', () => {
         
-        //portObj.portname = 'Penzance';
-        expect(portObj.portname).toBe('Destination');
+        expect(port.portname).toBe('RAK');
     })
 })
 
-describe ('addShip', () => {
+describe ('addShip & removeShip', () => {
+
+    beforeEach(() => {
+
+        port.addShip(ship);
+        port.addShip(ship2);
+        port.addShip(ship3);
+
+    })
 
     it ('adds a ship', () => {
-        const port1 = new Port('RAK');
-        const ship = {};
-        port1.addShip(ship);
-        expect (port1.totalShips).toContain(ship);
+  
+        expect (port.totalShips).toContain(ship);
 
     })
-})
-
-describe ('removeShip', () => {
 
     it ('has removeShip method', () => {
-        const port1 = new Port('RAK');
-        const ship1 = ship2 = ship3 = {};
-
-        //port1.totalShips = [ship1, ship2, ship3];
-        port1.addShip(ship1);
-        port1.addShip(ship2);
-        port1.addShip(ship3);
-
-
-        port1.removeShip(ship2);
-        expect (port1.totalShips).toEqual([ship1, ship2]);
-        
+     
+        port.removeShip(ship2);
+        expect (port.totalShips).toEqual([ship, ship2]);        
         
     })
 })
