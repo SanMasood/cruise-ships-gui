@@ -24,9 +24,6 @@ Ship.prototype = {
         this.currentPort = null;
 
         this.previousPort.removeShip(this);
-
-
-
     },
 
     dock(){

@@ -2,52 +2,42 @@ const Ship = require('../src/ship.js');
 const Port = require('../src/port.js');
 const Itinerary = require('../src/itinerary.js')
 
-/*let shipObj;
+let ship, port, itn, port2, itn2, ship2;
 
 beforeEach(() => {
 
-shipObj = new Ship(new Itinerary()); //pass portObj?
-create itn & port object here.
+    port = new Port ('RAK');
+    itn = new Itinerary([port]);
+    ship = new Ship(itn);
 
-});*/
+    port2 = new Port ('SAR');
+    itn2 = new Itinerary([port, port2]);
+    ship2 = new Ship(itn2);
+
+});
 
 describe ('constructor', () => {
 
     it('creates instance of object Ship', () => {
 
-        const port = new Port ('RAK');
-        const itn = new Itinerary([port]);
-        const shipObj = new Ship(itn);
-
-        expect(shipObj).toBeInstanceOf(Object);
+        expect(ship).toBeInstanceOf(Object);
 
     })
     it ('adds instantiated ship to port\'s totalShips', () => {
-        const port = new Port ('RAK');
-        const itn = new Itinerary([port]);
-        const shipObj = new Ship (itn);
-        //port.addShip(shipObj);
-
-        expect (port.totalShips).toContain(shipObj);
+     
+        expect (port.totalShips).toContain(ship);
 
 
     })
     it ('has a name', () => {
-        const port = new Port ('SAR');
-        const itn = new Itinerary([port]);
-        const shipObj = new Ship(itn);
-
-        shipObj.cruisename = "DiamondPrincess";
-        expect (shipObj.cruisename).toBe("DiamondPrincess");
+    
+        ship.cruisename = "DiamondPrincess";
+        expect (ship.cruisename).toBe("DiamondPrincess");
     })
 
     it ('has a starting port', () => {
-        const portObj = new Port('Destination');
-        const itn1 = new Itinerary([portObj]);
-        const shipObj2 = new Ship (itn1);
-
-
-        expect (shipObj2.currentPort).toBe(portObj);
+ 
+        expect (ship.currentPort).toBe(port);
 
     })
 
@@ -55,43 +45,21 @@ describe ('constructor', () => {
 describe ('setSail', () => {
 
     it ('sets sail from starting port', () => {
-
-        const port1 = new Port('RAK');
-        const port2 = new Port ('SAR');
-        const itn = new Itinerary([port1, port2]);
-        const ship = new Ship(itn);
       
-        ship.setSail();
+        ship2.setSail();
       
-        expect(ship.currentPort).toBeFalsy();
-        expect(ship.previousPort).toBe(port1);
+        expect(ship2.currentPort).toBeFalsy();
+        expect(ship2.previousPort).toBe(port);
 
-        expect(port1.totalShips).not.toContain(ship);
+        expect(port.totalShips).not.toContain(ship2);
 
     })
-
-        //removes ship from array ships:
-        //expect(port1.ships).not.toContain(ship);
-       /* const portObj = new Port('Destination');
-
-        shipObj.currentPort = 'Florence';
-        shipObj.setSail();
-        expect (shipObj.setSail()).toBeFalsy();*/
-
-
-        //expect (shipObj.setSail()).toEqual(shipObj.sailString);
-        //shipObj.previousPort = 'RAK' //HERE 
-        //expect(shipObj.previousPort).toBe(portObj);
     
 })
 
 describe ('dock', () => {
 
     it('docks at a given port', () => {
-        const port = new Port('Darfur');
-        const itn = new Itinerary([port]);    
-
-        const ship = new Ship (itn);        
       
         ship.dock(port);
         expect (ship.currentPort).toBe(port);    
@@ -99,50 +67,33 @@ describe ('dock', () => {
     })
 
     it ('can dock at a different port', () => {
-        const port1 = new Port ('RAK');
-        const port2 = new Port ('SAR');
-        const itnObj = new Itinerary ([port1, port2]);
-        const ship = new Ship (itnObj); 
         
-        ship.setSail();
-        ship.dock();
+        ship2.setSail();
+        ship2.dock();
 
-        expect(ship.currentPort).toBe(port2);     
-        expect(port2.totalShips).toContain(ship);  
+        expect(ship2.currentPort).toBe(port2);     
+        expect(port2.totalShips).toContain(ship2);  
 
-
-        /*
-        ship3.dock ();
-        ship3.currentport = ports[1];//next port in itnObj2
-
-        expect(ship3.currentport).toBe()
-        expect ()*/
     })
    
     it('can\'t sail further than its itinerary', () => {
-        const port1 = new Port('RAK');
-        const port2 = new Port('SAR');
-        const itn = new Itinerary([port1, port2]);
-        const ship = new Ship(itn);
+          
+        ship2.setSail();
+        ship2.dock();
       
-        ship.setSail();
-        ship.dock();
-      
-        expect(() => ship.setSail()).toThrowError('End of itinerary reached');
-      });
+        expect(() => ship2.setSail()).toThrowError('End of itinerary reached');
+    });
 
-      it ('ship gets added to totalShips of port when ship docks', () => {
-
-        const port = new Port('Darfur');
-        const itn = new Itinerary([port]);    
-        const ship = new Ship (itn);        
+    
+    it ('ship gets added to totalShips of port when ship docks', () => {  
       
         ship.dock();
 
         expect (port.totalShips).toContain(ship);
 
-
     })
 
-
 })
+
+/*NEW STUFF: Destructuring assignment. E.g: ({a, b, ...rest} = {a: 10, b: 20, c: 30, d: 40});
+*/
