@@ -1,13 +1,13 @@
 const Port = require('../src/port.js');
-const Ship = require('../src/ship.js');
-const Itinerary = require('../src/itinerary.js')
 
 let port, ship, ship2, ship3;
 
 beforeEach(() => {
 
 port = new Port('RAK');
-ship = ship2 = ship3 = jest.fn();
+ship = jest.fn();
+ship2 = jest.fn();
+ship3 = jest.fn();
 
 });
 
@@ -44,7 +44,7 @@ describe ('addShip & removeShip', () => {
     it ('has removeShip method', () => {
      
         port.removeShip(ship2);
-        expect (port.totalShips).toEqual([ship, ship2]);        
+        expect (port.totalShips).toEqual([ship, ship3]);        
         
     })
 })

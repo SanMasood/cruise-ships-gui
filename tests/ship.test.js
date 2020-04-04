@@ -19,12 +19,15 @@ beforeEach(() => {
     
       port2 = {
         ...port,
-        name: 'SAR',
+        portname: 'SAR',
         totalShips: []
       };
 
-    //port = new Port ('RAK');
-    //port2 = new Port ('SAR');
+    itn = {
+        ports: [port1, port2]
+
+    };
+
     itn = new Itinerary([port1, port2]);
     ship = new Ship(itn);
 
@@ -66,7 +69,6 @@ describe ('setSail', () => {
         expect(ship.previousPort).toBe(port1);
 
         expect(port1.removeShip).toHaveBeenCalledWith(ship);
-
     })
     
 })
