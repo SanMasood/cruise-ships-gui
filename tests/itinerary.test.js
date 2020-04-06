@@ -1,5 +1,4 @@
 const Itinerary = require('../src/itinerary.js')
-const Port = require('../src/port.js');
 
 let port, port2, itn;
 

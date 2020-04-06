@@ -1,5 +1,4 @@
 const Ship = require('../src/ship.js');
-const Port = require('../src/port.js');
 const Itinerary = require('../src/itinerary.js')
 
 let ship, port1, itn, port2;
@@ -28,7 +27,7 @@ beforeEach(() => {
 
     };
 
-    itn = new Itinerary([port1, port2]);
+    //itn = new Itinerary([port1, port2]);
     ship = new Ship(itn);
 
 });

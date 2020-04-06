@@ -12,6 +12,7 @@ function Ship(itn){
 Ship.prototype = {
 
     setSail(){
+        console.log (`Ship ${this.cruisename} has left port ${this.currentPort}`);
 
         //this.sailString =`Cruise ${this.cruisename} has set sail from ${this.startingport}.`;
         //console.log (this.sailString);
@@ -20,10 +21,13 @@ Ship.prototype = {
         if (currentPortIndex === this.itn.ports.length-1)
         throw new Error('End of itinerary reached');
 
+
+
         this.previousPort = this.currentPort;
         this.currentPort = null;
 
         this.previousPort.removeShip(this);
+
     },
 
     dock(){
