@@ -1,5 +1,5 @@
 const Port = require('../src/port.js');
-const Ship = require('../src/ship.js)
+const Ship = require('../src/ship.js')
 
 let port, ship, ship2, ship3;
 
