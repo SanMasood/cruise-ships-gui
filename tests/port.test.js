@@ -1,4 +1,5 @@
 const Port = require('../src/port.js');
+const Ship = require('../src/ship.js)
 
 let port, ship, ship2, ship3;
 
@@ -37,7 +38,7 @@ describe ('addShip & removeShip', () => {
 
     it ('adds a ship', () => {
   
-        expect (port.totalShips).toContain(ship);
+        expect (port.totalShips).toEqual([ship, ship2, ship3]);
 
     })
 

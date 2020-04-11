@@ -1,5 +1,5 @@
 function Ship(itn){
-    this.cruisename;
+    this.cruisename = 'Diamond Princess';
 
     this.itn = itn;
     this.currentPort = itn.ports[0];
@@ -13,9 +13,6 @@ Ship.prototype = {
 
     setSail(){
         console.log (`Ship ${this.cruisename} has left port ${this.currentPort}`);
-
-        //this.sailString =`Cruise ${this.cruisename} has set sail from ${this.startingport}.`;
-        //console.log (this.sailString);
        
         const currentPortIndex = this.itn.ports.indexOf(this.currentPort);
         if (currentPortIndex === this.itn.ports.length-1)
