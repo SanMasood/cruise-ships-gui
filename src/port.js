@@ -1,3 +1,6 @@
+
+//(function exportPort() {
+
 function Port(portname){
 
     this.portname = portname;
@@ -16,5 +19,13 @@ Port.prototype = {
         this.totalShips.splice(shipIndex, 1);
     },
 
-}
+};
+
+/*if (typeof module !== 'undefined' && module.exports) {
+    module.exports = Port;
+  } else {
+    window.Port = Port;
+  }
+}());*/
+
 module.exports = Port;

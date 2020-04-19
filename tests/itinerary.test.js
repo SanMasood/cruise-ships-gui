@@ -19,9 +19,9 @@ describe ('constructor', () => {
 
     it ('has a ports property', () => {
 
-        itn.ports = 'LA';
+        //itn.ports = 'LA';
 
-        expect(itn.ports).toBe('LA');
+        expect(itn.ports).toBe([port1,port2]);
 
     })
 

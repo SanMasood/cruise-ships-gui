@@ -1,16 +1,55 @@
+
+//(function exportController () {
 function Controller () {
 
     this.initialiseSea();
+    this.renderPorts(ports);
 }
 
 
-Controller.prototype.initialiseSea = function initialiseSea (){
+Controller.prototype = {
+    
+    initialiseSea (){
 
-        window.setInterval(() => {console.log('Hello');}, 500);
+    const backgrounds = [
+        './images/water0.png',
+        './images/water1.png',
+      ];
+
+      let backgroundIndex = 0;
+
+
+        window.setInterval(() => {document.querySelector('#viewport').style.backgroundImage = `url('${backgrounds[backgroundIndex % backgrounds.length]}')`;
+        backgroundIndex += 1;}, 500);
         
+}
+    renderPorts(ports){
 
-     
+        let portsElement = document.querySelector('#ports');
+        portsElement.style.width = '0' px;
 
+       
 
+        ports.forEach((port, index) => {
+            const newPortElement = document.createElement('div');
+            newPortElement.className = 'port';
+            
+            newPortElement.dataset.portName = port.name;
+            newPortElement.dataset.portIndex = index;
+
+            portsElement.appendChild(newPortElement);
+
+            const portsElementWidth = parseInt(portsElement.style.width, 10);
+            portsElement.style.width = `${portsElementWidth + 256}px`;
+        
+        });
     }
+}
+//if (typeof module !== 'undefined' && module.exports) {
+    module.exports = Controller;
+  //} else {
+  /*  window.Controller = Controller;
+  }
+
+}())*/
 

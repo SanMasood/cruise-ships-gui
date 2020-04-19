@@ -15,15 +15,17 @@ Ship.prototype = {
         console.log (`Ship ${this.cruisename} has left port ${this.currentPort}`);
        
         const currentPortIndex = this.itn.ports.indexOf(this.currentPort);
+        
         if (currentPortIndex === this.itn.ports.length-1)
         throw new Error('End of itinerary reached');
 
 
-
+        else {
         this.previousPort = this.currentPort;
         this.currentPort = null;
 
         this.previousPort.removeShip(this);
+        }
 
     },
 
