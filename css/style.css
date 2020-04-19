@@ -4,7 +4,7 @@ head {
 
 body {
     height : 100%;
-    /*background-color: black;*/
+    background-color: black;
     display : flex;
     align-items: center;
     justify-content: center;
@@ -19,7 +19,6 @@ body {
 }
 
 #ports{
-    width : 0px;
     margin-top: 96px;
     display: flex;
     justify-content: space-around;
@@ -28,5 +27,5 @@ body {
 #ports > .port{
     width : 64px;
     height: 32px;
-    background-image: url('../images/port.png');
+    background-image: url("../images/port.png");
 }

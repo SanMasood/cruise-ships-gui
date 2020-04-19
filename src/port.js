@@ -1,5 +1,5 @@
 
-//(function exportPort() {
+(function exportPort() {
 
 function Port(portname){
 
@@ -21,11 +21,11 @@ Port.prototype = {
 
 };
 
-/*if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== 'undefined' && module.exports) {
     module.exports = Port;
   } else {
     window.Port = Port;
   }
-}());*/
+}());
 
-module.exports = Port;
+//module.exports = Port;

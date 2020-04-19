@@ -1,5 +1,5 @@
 
-//(function exportController () {
+(function exportController () {
 function Controller () {
 
     this.initialiseSea();
@@ -16,40 +16,38 @@ Controller.prototype = {
         './images/water1.png',
       ];
 
-      let backgroundIndex = 0;
+    let backgroundIndex = 0;
 
 
-        window.setInterval(() => {document.querySelector('#viewport').style.backgroundImage = `url('${backgrounds[backgroundIndex % backgrounds.length]}')`;
-        backgroundIndex += 1;}, 500);
+     window.setInterval(() => {document.querySelector('#viewport').style.backgroundImage = `url('${backgrounds[backgroundIndex % backgrounds.length]}')`;
+     backgroundIndex += 1;}, 500);
         
-}
+  },
     renderPorts(ports){
 
-        let portsElement = document.querySelector('#ports');
-        portsElement.style.width = '0' px;
+    let portsElement = document.querySelector('#ports');
+    portsElement.style.width = '0 px';       
 
-       
-
-        ports.forEach((port, index) => {
-            const newPortElement = document.createElement('div');
-            newPortElement.className = 'port';
+    ports.forEach((port, index) => {
+      const newPortElement = document.createElement('div');
+      newPortElement.className = 'port';
             
-            newPortElement.dataset.portName = port.name;
-            newPortElement.dataset.portIndex = index;
+      newPortElement.dataset.portName = port.name;
+      newPortElement.dataset.portIndex = index;
 
-            portsElement.appendChild(newPortElement);
+      portsElement.appendChild(newPortElement);
 
-            const portsElementWidth = parseInt(portsElement.style.width, 10);
-            portsElement.style.width = `${portsElementWidth + 256}px`;
+      const portsElementWidth = parseInt(portsElement.style.width, 10);
+      portsElement.style.width = `${portsElementWidth + 256}px`;
         
-        });
-    }
+      });
+    },
 }
-//if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== 'undefined' && module.exports) {
     module.exports = Controller;
-  //} else {
-  /*  window.Controller = Controller;
+  } else {
+    window.Controller = Controller;
   }
 
-}())*/
+}())
 

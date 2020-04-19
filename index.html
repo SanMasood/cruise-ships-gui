@@ -19,13 +19,12 @@
     <script src = "src/controller.js"></script>
     <script src = "src/port.js"></script>
     <script src = "src/itinerary.js"></script>
-    <script src = "src/controller.js"></script>
 
 
 
     <script>
     const controller = new Controller ();
-    const port = new Port('SAR')
+    //const port = new Port('SAR')
     const itn1 = new Itinerary ([new Port('RAK'), new Port ('SAR')]);
     controller.renderPorts(itn1.ports)
 
